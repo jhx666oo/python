@@ -2,6 +2,106 @@
 ## 实验过程和结果
 
 ### Git基础：
+
+#### 初始化一个新的Git仓库
+
+```markdown
+使用以下命令初始化一个新的Git仓库：
+git init
+```
+
+
+#### 克隆现有仓库
+
+```markdown
+使用以下命令克隆一个现有的Git仓库到本地：
+
+git clone <repository_url>
+```
+
+#### 配置Git用户信息
+
+```markdown
+配置Git用户的全局用户名和邮箱地址：
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+```
+
+#### 查看仓库状态
+
+```markdown
+查看当前Git仓库的状态：
+
+git status
+```
+
+#### 添加文件到暂存区
+
+```markdown
+将文件添加到Git的暂存区：
+
+git add <file_name>
+```
+
+#### 提交更改
+
+```markdown
+提交暂存区的更改到仓库：
+
+git commit -m "Commit message"
+```
+
+#### 查看提交历史
+
+```markdown
+查看仓库的提交历史记录：
+
+git log
+```
+
+#### 创建分支
+
+```markdown
+创建一个新的分支：
+
+git branch <branch_name>
+```
+
+#### 切换分支
+
+```markdown
+切换到一个已存在的分支：
+
+git checkout <branch_name>
+```
+
+#### 合并分支
+
+```markdown
+将一个分支的更改合并到当前分支：
+
+git merge <branch_name>
+```
+
+#### 拉取远程更改
+
+```markdown
+从远程仓库拉取最新的更改：
+
+git pull
+```
+
+#### 推送更改到远程仓库
+
+```markdown
+将本地分支的更改推送到远程仓库：
+
+git push origin <branch_name>
+```
+
+### learngitbranching.js.org部分方法：
 - Git commit：
   创建提交记录
 ```bash
@@ -59,7 +159,7 @@ git revert HEAD
 ### Markdown基础
 当您想要学习Markdown文档的基础操作时，以下是一些常用的Markdown语法示例：
 
-### 1. 标题
+#### 1. 标题
 
 Markdown中可以使用 `#` 符号来表示标题，标题的级别通过 `#` 的数量来确定，例如：
 
@@ -69,11 +169,11 @@ Markdown中可以使用 `#` 符号来表示标题，标题的级别通过 `#` �
 ### 这是三级标题
 ```
 
-### 2. 列表
+#### 2. 列表
 
 Markdown支持有序和无序列表，使用 `*` 或 `+` 或 `-` 表示无序列表，使用数字和点表示有序列表，例如：
 
-#### 无序列表：
+##### 无序列表：
 
 ```markdown
 - 项目1
@@ -89,7 +189,7 @@ Markdown支持有序和无序列表，使用 `*` 或 `+` 或 `-` 表示无序列
 * 项目3
 ```
 
-#### 有序列表：
+##### 有序列表：
 
 ```markdown
 1. 第一项
@@ -97,24 +197,24 @@ Markdown支持有序和无序列表，使用 `*` 或 `+` 或 `-` 表示无序列
 3. 第三项
 ```
 
-### 3. 链接与图片
+#### 3. 链接与图片
 
 插入链接和图片的语法如下：
 
-#### 链接：
+##### 链接：
 
 ```markdown
 [Github](https://github.com/)
 
 ```
 
-#### 图片：
+##### 图片：
 
 ```markdown
 ![图片描述](链接到图片的URL)
 ```
 
-### 4. 引用块
+#### 4. 引用块
 
 使用 `>` 符号表示引用块，例如：
 
@@ -122,7 +222,7 @@ Markdown支持有序和无序列表，使用 `*` 或 `+` 或 `-` 表示无序列
 > 这是一个引用块。
 ```
 
-### 5. 代码块
+#### 5. 代码块
 
 使用三个反引号（```)来创建代码块，还可以指定代码的语言，例如：
 
@@ -131,9 +231,9 @@ Markdown支持有序和无序列表，使用 `*` 或 `+` 或 `-` 表示无序列
 def hello_world():
     print("Hello, world!")
 ```
-```
 
-### 6. 粗体与斜体
+
+#### 6. 粗体与斜体
 
 使用 `**` 或 `__` 包围文本可以将其设置为粗体，使用 `*` 或 `_` 包围文本可以将其设置为斜体，例如：
 
@@ -142,7 +242,7 @@ def hello_world():
 *这是斜体文本*
 ```
 
-### 7. 表格
+#### 7. 表格
 
 创建表格的语法如下：
 
