@@ -260,7 +260,7 @@ def even_or_odd(number):
 第2题：弹跳的球（Bouncing Balls）流程图如下：
 
 ```mermaid
-flowchart LR
+flowchart BT
     A[Start] --> B{h>0,0>bounce>1,h>window}
     B -->|Yes|G[flag=1] 
     G-->C{h*bounce>window}
