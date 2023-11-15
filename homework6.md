@@ -2,13 +2,13 @@
 
 班级： 21计科1
 
-学号： 202302200000
+学号： B20210302104
 
-姓名： 张三
+姓名： 金皓翔
 
-Github地址：<https://github.com/yourusername/python_course>
+Github地址：<https://github.com/jhx666oo/python>
 
-CodeWars地址：<https://www.codewars.com/users/yourusername>
+CodeWars地址：<https://www.codewars.com/users/jhx666oo>
 
 ---
 
@@ -71,6 +71,19 @@ lst1 = [
 
 [代码提交地址](https://www.codewars.com/kata/coding-meetup-number-1-higher-order-functions-series-count-the-number-of-javascript-developers-coming-from-europe)
 
+代码：
+```python
+def count_developers(lst):
+    count=0
+    for list1 in lst:
+        if list1["continent"]=="Europe" and list1["language"]=="JavaScript":
+            count+=1
+    return count
+    
+```
+思路：
+初始化计数器，遍历列表，如果列表有满足条件"continent" 键的值为 "Europe"，"language" 键的值为 "JavaScript"，将计数器 count 的值增加 1。遍历完成后，返回计数器 count 的值，即满足条件的开发者数量。
+
 ---
 
 #### 第二题： 使用函数进行计算
@@ -103,6 +116,42 @@ eight(divided_by(three()))
 代码提交地址：
 <https://www.codewars.com/kata/525f3eda17c7cd9f9e000b39>
 
+代码：
+```python
+def zero(fun=None): 
+    return fun(0) if fun else 0
+def one(fun=None): 
+    return fun(1) if fun else 1
+def two(fun=None): 
+    return fun(2) if fun else 2
+def three(fun=None): 
+    return fun(3) if fun else 3
+def four(fun=None): 
+    return fun(4) if fun else 4
+def five(fun=None):
+    return fun(5) if fun else 5
+def six(fun=None): 
+    return fun(6) if fun else 6
+def seven(fun=None): 
+    return fun(7) if fun else 7
+def eight(fun=None): 
+    return fun(8) if fun else 8
+def nine(fun=None): 
+    return fun(9) if fun else 9
+
+def plus(y): 
+    return lambda x: x + y
+def minus(y): 
+    return lambda x: x - y
+def times(y): 
+    return lambda x: x * y
+def divided_by(y): 
+    return lambda x: x // y 
+
+```
+思路：
+利用高阶函数和闭包在 Python 中模拟基本的算术运算，将数字和运算操作都表示为函数，实现以函数调用的形式表达和计算算术表达式。
+
 ---
 
 #### 第三题： 缩短数值的过滤器(Number Shortening Filter)
@@ -126,6 +175,20 @@ filter2('pippi') == 'pippi'
 
 代码提交地址：
 <https://www.codewars.com/kata/56b4af8ac6167012ec00006f>
+
+代码：
+```python
+def shorten_number(suffixes,base):
+    def func(n):
+        try: n = int(float(n))
+        except: return str(n)
+        i = 0; m = len(suffixes)-1
+        while base<n and i<m: n = n//base; i += 1 
+        return str(n)+suffixes[i]
+    return func
+```
+
+思路：这道题目使用高阶函数创建另一函数，用于将数字字符串转换为基于给定基数和后缀列表的简短格式。
 
 ---
 
@@ -162,6 +225,15 @@ list1 = [
 
 代码提交地址：
 <https://www.codewars.com/kata/582887f7d04efdaae3000090>
+
+代码：
+```python
+ def find_senior(lst): 
+    mage = max(a['age'] for a in lst)
+    return [a for a in lst if a['age']==mage]
+```
+思路：
+利用生成器作为max函数的参数，找到最大的年龄，利用列表推导返回结果。
 
 ---
 
@@ -285,35 +357,52 @@ curryPartial(curryPartial(curryPartial(add, 1)), 2, 3) # =>6
 代码提交地址：
 <https://www.codewars.com/kata/53cf7e37e9876c35a60002c9>
 
+代码：
+```python
+from inspect import signature
+from functools import partial
+
+def curry_partial(main_func, *args):
+    
+    if not(callable(main_func)):
+        return main_func
+    
+    p = len(signature(main_func).parameters)
+    func = partial(main_func)
+    
+    for a in args:
+        if len(func.args) == p: break
+        func = partial(func, a)
+    
+    if len(func.args) < p:
+        return partial(curry_partial, main_func, *func.args)
+
+    return func()
+```
+思路：
+这个函数的目的是将一个可调用函数进行柯里化和偏函数化，允许逐步传递参数并最终执行该函数。如果传递的参数数量不足，它会返回一个新的偏函数，等待更多参数的传递。如果传递的参数超过函数所需的数量，多余的参数会被忽略。这个函数的核心思想是参数逐步传递和延迟执行。
+
 ---
 
 ### 第三部分
 
 使用Mermaid绘制程序流程图
 
-安装VSCode插件：
+```mermaid 
+graph TD
+    A[开始] --> B[初始化计数器 count 为 0]
+    B --> C[遍历列表 lst 中的每个元素]
+    C --> D{检查元素的大陆是否为 'Europe'}
+    D -->|是| E{检查元素的语言是否为 'JavaScript'}
+    D -->|否| C
+    E -->|是| F[计数器 count 加 1]
+    E -->|否| C
+    F --> C
+    C --> G[完成遍历]
+    G --> H[返回计数器 count]
+    H --> I[结束]
 
-- Markdown Preview Mermaid Support
-- Mermaid Markdown Syntax Highlighting
-
-使用Markdown语法绘制你的程序绘制程序流程图（至少一个），Markdown代码如下：
-
-![程序流程图](/Experiments/img/2023-08-05-22-00-00.png)
-
-显示效果如下：
-
-```mermaid
-flowchart LR
-    A[Start] --> B{Is it?}
-    B -->|Yes| C[OK]
-    C --> D[Rethink]
-    D --> B
-    B ---->|No| E[End]
 ```
-
-查看Mermaid流程图语法-->[点击这里](https://mermaid.js.org/syntax/flowchart.html)
-
-使用Markdown编辑器（例如VScode）编写本次实验的实验报告，包括[实验过程与结果](#实验过程与结果)、[实验考查](#实验考查)和[实验总结](#实验总结)，并将其导出为 **PDF格式** 来提交。
 
 ## 实验过程与结果
 
@@ -351,6 +440,7 @@ def add_binary(a,b):
 
 **注意：不要使用截图，Markdown文档转换为Pdf格式后，截图可能会无法显示。**
 
+
 ## 实验考查
 
 请使用自己的语言并使用尽量简短代码示例回答下面的问题，这些问题将在实验检查时用于提问和答辩以及实际的操作。
@@ -359,6 +449,54 @@ def add_binary(a,b):
 2. 什么是lambda函数？请举例说明。
 3. 什么是高阶函数？常用的高阶函数有哪些？这些高阶函数如何工作？使用简单的代码示例说明。
 
+### 1. 什么是函数式编程范式？
+函数式编程（Functional Programming, FP）是一种编程范式，它将计算视为数学函数的评估，并避免使用程序状态和可变数据。在函数式编程中，函数是一等公民，这意味着它们可以作为参数传递给其他函数，也可以作为值返回。函数式编程强调纯函数（无副作用的函数）和不可变性（数据不会被修改）。
+
+### 2. 什么是lambda函数？请举例说明。
+Lambda 函数，也称为匿名函数，是一种在 Python 中定义小型、一次性、没有名称的函数的方法。Lambda 函数可以接受任意数量的参数，但只能有一个表达式。它们通常用于需要函数对象的地方，但仅用一次或非常简短。
+
+**示例**：
+
+```python
+# 使用 lambda 函数计算两数之和
+add = lambda x, y: x + y
+print(add(5, 3))  # 输出: 8
+```
+
+### 3. 什么是高阶函数？常用的高阶函数有哪些？这些高阶函数如何工作？使用简单的代码示例说明。
+高阶函数是指至少满足下列一个条件的函数：
+- 接受一个或多个函数作为参数。
+- 返回一个函数作为结果。
+
+在 Python 中，常见的高阶函数包括 `map()`, `filter()`, 和 `reduce()`。
+
+- **map()**：对序列的每个元素应用一个给定的函数，并返回一个 map 对象（可迭代）。
+  ```python
+  # 使用 map() 函数将每个数字平方
+  numbers = [1, 2, 3, 4, 5]
+  squares = map(lambda x: x**2, numbers)
+  print(list(squares))  # 输出: [1, 4, 9, 16, 25]
+  ```
+
+- **filter()**：使用一个函数来测试序列中的每个元素，返回一个包含所有通过测试的元素的迭代器。
+  ```python
+  # 使用 filter() 函数过滤出大于 2 的数字
+  numbers = [1, 2, 3, 4, 5]
+  filtered = filter(lambda x: x > 2, numbers)
+  print(list(filtered))  # 输出: [3, 4, 5]
+  ```
+
+- **reduce()**（需从 `functools` 导入）：对序列中的元素进行累积操作（如求和、求积）。
+  ```python
+  from functools import reduce
+  # 使用 reduce() 函数计算所有数字的乘积
+  numbers = [1, 2, 3, 4, 5]
+  product = reduce(lambda x, y: x * y, numbers)
+  print(product)  # 输出: 120
+  ```
+
+
+
 ## 实验总结
 
-总结一下这次实验你学习和使用到的知识，例如：编程工具的使用、数据结构、程序语言的语法、算法、编程技巧、编程思想。
+- 通过这次实验，我更加了解了python函数方面的知识，也接触了到了lambda函数和高阶函数的使用，并熟悉函数式编程的概念完成了实践。
